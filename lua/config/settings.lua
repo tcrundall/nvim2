@@ -1,4 +1,9 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
+local set = vim.opt
 
-vim.opt.shiftwidth = 4
+set.number = true
+set.relativenumber = true
+
+set.shiftwidth = 4
+
+set.splitbelow = true
+set.splitright = true

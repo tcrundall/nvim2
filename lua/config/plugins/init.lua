@@ -14,5 +14,8 @@ return {
   },
   {
     'tpope/vim-fugitive',
+    config = function()
+      vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Git<cr>", {desc ="[G]it [S]tatus"})
+    end
   },
 }

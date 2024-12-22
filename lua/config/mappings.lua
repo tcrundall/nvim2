@@ -1,6 +1,20 @@
-vim.api.nvim_set_keymap("n", "<space><space>x", "<cmd>source<cr>", {})
-vim.api.nvim_set_keymap("n", "<space>x", ":.lua<cr>", {})
-vim.api.nvim_set_keymap("v", "<space>x", ":lua<cr>", {})
+local map = vim.api.nvim_set_keymap
+
+map("n", "<space><space>x", "<cmd>source<cr>", {})
+map("n", "<space>x", ":.lua<cr>", {})
+map("v", "<space>x", ":lua<cr>", {})
+
+map("n", "<A-j>", "<cmd>cnext<cr>", {})
+map("n", "<A-k>", "<cmd>cprev<cr>", {})
+
+map("n", "<C-j>", "<C-W>j", {})
+map("n", "<C-k>", "<C-W>k", {})
+map("n", "<C-h>", "<C-W>h", {})
+map("n", "<C-l>", "<C-W>l", {})
+
+map("n", "<esc>", "<cmd>noh<cr>", {})
+
+map("t", "<esc><esc>", "<C-\\><C-N>", {})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight text on yank",
