@@ -12,4 +12,7 @@ return {
       require("mini.statusline").setup()
     end
   },
+  {
+    'tpope/vim-fugitive',
+  },
 }
