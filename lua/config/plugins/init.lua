@@ -2,20 +2,20 @@ return {
   {
     "folke/tokyonight.nvim",
     config = function()
-      vim.cmd.colorscheme "tokyonight"
-    end
+      vim.cmd.colorscheme("tokyonight")
+    end,
   },
   {
-    'echasnovski/mini.nvim',
-    version = '*',
+    "echasnovski/mini.nvim",
+    version = "*",
     config = function()
       require("mini.statusline").setup()
-    end
+    end,
   },
   {
-    'tpope/vim-fugitive',
+    "tpope/vim-fugitive",
     config = function()
-      vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Git<cr>", {desc ="[G]it [S]tatus"})
-    end
+      vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Git<cr>", { desc = "[G]it [S]tatus" })
+    end,
   },
 }
