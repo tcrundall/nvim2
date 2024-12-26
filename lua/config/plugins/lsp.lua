@@ -1,6 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
+    { "saghen/blink.cmp" },
     {
       "folke/lazydev.nvim",
       ft = "lua", -- only load on lua files
@@ -12,40 +13,23 @@ return {
         },
       },
     },
-    -- { -- optional cmp completion source for require statements and module annotations
-    --   "hrsh7th/nvim-cmp",
-    --   opts = function(_, opts)
-    --     opts.sources = opts.sources or {}
-    --     table.insert(opts.sources, {
-    --       name = "lazydev",
-    --       group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-    --     })
-    --   end,
-    -- },
-    -- { -- optional blink completion source for require statements and module annotations
-    --   "saghen/blink.cmp",
-    --   opts = {
-    --     sources = {
-    --       -- add lazydev to your completion providers
-    --       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-    --       providers = {
-    --         lazydev = {
-    --           name = "LazyDev",
-    --           module = "lazydev.integrations.blink",
-    --           -- make lazydev completions top priority (see `:h blink.cmp`)
-    --           score_offset = 100,
-    --         },
-    --       },
-    --     },
-    --   },
-    -- }
-    -- { "folke/neodev.nvim", enabled = false }, -- make sure to uninstall or disable neodev.nvim
   },
-  config = function()
-    require("lspconfig").lua_ls.setup({})
-    require("lspconfig").gopls.setup {}
+  opts = {
+    servers = {
+      lua_ls = {},
+      gopls = {},
+    },
+  },
+  config = function(_, opts)
+    local lspconfig = require("lspconfig")
+    for server, config in pairs(opts.servers) do
+      -- passing config.capabilities to blink.cmp merges with the capabilities in your
+      -- `opts[server].capabilities, if you've defined it
+      config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+      lspconfig[server].setup(config)
+    end
 
-    vim.api.nvim_create_autocmd('LspAttach', {
+    vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if client == nil then
@@ -57,9 +41,9 @@ return {
         --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
         -- end
 
-        if client:supports_method('textDocument/formatting', 0) then
+        if client:supports_method("textDocument/formatting", 0) then
           -- Format the current buffer on save
-          vim.api.nvim_create_autocmd('BufWritePre', {
+          vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = args.buf,
             callback = function()
               vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
@@ -68,5 +52,5 @@ return {
         end
       end,
     })
-  end
+  end,
 }
