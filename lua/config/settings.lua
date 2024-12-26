@@ -7,3 +7,5 @@ set.shiftwidth = 4
 
 set.splitbelow = true
 set.splitright = true
+
+set.scrolloff = 8

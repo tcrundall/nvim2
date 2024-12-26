@@ -15,3 +15,8 @@ map("n", "<C-l>", "<C-W>l")
 map("n", "<esc>", "<cmd>noh<cr>")
 
 map("t", "<esc><esc>", "<C-\\><C-N>")
+
+map("n", "n", "nzz")
+map("n", "N", "Nzz")
+map("n", "*", "*zz")
+map("n", "#", "#zz")

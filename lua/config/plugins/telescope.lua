@@ -52,7 +52,15 @@ return {
 
     vim.keymap.set("n", "<leader>ec", function()
       builtin.find_files({ cwd = vim.fn.stdpath("config") })
-    end)
+    end, {
+      desc = "[E]dit [C]onfig files",
+    })
+
+    vim.keymap.set("n", "<leader>ep", function()
+      builtin.find_files({ cwd = vim.fn.stdpath("data") })
+    end, {
+      desc = "[E]dit [P]lugin files",
+    })
 
     vim.keymap.set("n", "<leader>en", function()
       builtin.find_files({ cwd = "~/Repos/notes" })
@@ -64,7 +72,7 @@ return {
         no_ignore = true,
         no_ignore_parent = true,
       })
-    end, { desc = "Telescope find files" })
+    end, { desc = "Telescope [S]earch all [F]iles" })
 
     vim.keymap.set("n", "<leader>sx", builtin.current_buffer_fuzzy_find)
   end,
