@@ -1,8 +1,8 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   config = function()
     ---@diagnostic disable-next-line: missing-fields
-    require 'nvim-treesitter.configs'.setup {
+    require("nvim-treesitter.configs").setup({
       -- A list of parser names, or "all"
       ensure_installed = { "lua", "go", "python", "c_sharp" },
 
@@ -22,6 +22,15 @@ return {
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = true,
       },
-    }
-  end
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<leader><leader>v",
+          node_incremental = "<leader>k",
+          scope_incremental = "<leader>h",
+          node_decremental = "<leader>j",
+        },
+      },
+    })
+  end,
 }
