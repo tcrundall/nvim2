@@ -8,9 +8,19 @@ return {
   config = function()
     require("nvim-tree").setup({
       sync_root_with_cwd = true,
+      actions = {
+        open_file = {
+          quit_on_open = true,
+        },
+      },
     })
 
-    vim.keymap.set("n", "<leader>tt", "<cmd>NvimTreeToggle<cr>", { desc = "[T]ree toggle" })
+    vim.keymap.set("n", "<leader>tt", function()
+      require("nvim-tree.api").tree.toggle({ find_file = true })
+    end, { desc = "[T]ree toggle" })
+    vim.keymap.set("n", "<leader>to", function()
+      require("nvim-tree.api").tree.open({ find_file = true })
+    end, { desc = "[T]ree [F]ocus current file's dir" })
     vim.keymap.set("n", "<leader>tl", function()
       require("nvim-tree.api").tree.find_file({ open = true })
     end, { desc = "[T]ree [L]ocate current file" })
@@ -34,5 +44,11 @@ return {
       cwd = cwd or utils.buffer_dir()
       builtin.live_grep({ cwd = cwd })
     end, { desc = "[S]earch in [L]ocal dir" })
+
+    vim.api.nvim_create_autocmd("BufEnter", {
+      callback = function()
+        require("nvim-tree.api").tree.find_file()
+      end,
+    })
   end,
 }
