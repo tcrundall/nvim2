@@ -13,25 +13,34 @@ return {
           quit_on_open = true,
         },
       },
+      update_focused_file = { enable = false },
     })
+    local api = require("nvim-tree.api")
 
     vim.keymap.set("n", "<leader>tt", function()
-      require("nvim-tree.api").tree.toggle({ find_file = true })
+      api.tree.toggle({ focus = false })
     end, { desc = "[T]ree toggle" })
+
     vim.keymap.set("n", "<leader>to", function()
-      require("nvim-tree.api").tree.open({ find_file = true })
-    end, { desc = "[T]ree [F]ocus current file's dir" })
+      api.tree.open({ find_file = true })
+    end, { desc = "[T]ree [O]pen" })
+
+    vim.keymap.set("n", "<leader>tc", function()
+      api.tree.close()
+    end, { desc = "[T]ree [C]lose" })
+
     vim.keymap.set("n", "<leader>tl", function()
-      require("nvim-tree.api").tree.find_file({ open = true })
+      api.tree.find_file({ open = true })
     end, { desc = "[T]ree [L]ocate current file" })
+
     vim.keymap.set("n", "<leader>tf", function()
-      require("nvim-tree.api").tree.find_file({ open = true, update_root = true })
-    end, { desc = "[T]ree [F]ocus current file's dir" })
+      api.tree.find_file({ open = true, update_root = true })
+    end, { desc = "[T]ree [F]ind current file's dir" })
 
     vim.keymap.set("n", "<leader>sl", function()
       local builtin = require("telescope.builtin")
       local utils = require("telescope.utils")
-      local node = require("nvim-tree.api").tree.get_node_under_cursor()
+      local node = api.tree.get_node_under_cursor()
       local cwd
       if node ~= nil then
         if node.type == "file" then
@@ -45,10 +54,11 @@ return {
       builtin.live_grep({ cwd = cwd })
     end, { desc = "[S]earch in [L]ocal dir" })
 
-    vim.api.nvim_create_autocmd("BufEnter", {
-      callback = function()
-        require("nvim-tree.api").tree.find_file()
-      end,
-    })
+    -- -- auto find file in tree
+    -- vim.api.nvim_create_autocmd("BufEnter", {
+    --   callback = function()
+    --     api.tree.find_file()
+    --   end,
+    -- })
   end,
 }
