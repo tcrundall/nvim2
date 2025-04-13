@@ -37,6 +37,7 @@ return {
             return
           end
 
+          -- TODO: Work out why "completion" is nil
           -- if client:supports_method('textDocument/completion') then
           --   -- Enable auto-completion
           --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
