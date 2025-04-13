@@ -17,11 +17,12 @@ Have a sleek neovim configuration where I understand everything deeply
     - markdown
     - C#
 - blink
-- tmux navigator
-- treesitter and user methods
+- [x] tmux navigator
+- treesitter (familiarise with user methods)
 - oatmeal
 - fugitive
     - maps: unstage hunk
+- spell checker
 
 ### Skills
 
@@ -30,6 +31,7 @@ Have a sleek neovim configuration where I understand everything deeply
 ### Extensions
 
 - link follower
+    - extend to make use of `gx` / `vim.ui.open()`
 
 ### Standard vim
 
@@ -48,3 +50,14 @@ My mac struggles to compile treesitter parsers.
 Check temp dirs in `~/.local/share/nvim/tree-sitter-*` and try to manually compile (with make?).
 
 Don't spend too much time on this before mac is updated.
+
+### Link following example
+
+asdfa dfasdf [some website](google.com)
+
+asdfa sdf [some plugin](./lua/config/plugins/init.lua#L100)
+
+asdfa sdf [some plugin](lua/config/plugins/init.lua#L100)
+
+asdfa sdf [some plugin](lua/config/plugins/init.lua)
+
