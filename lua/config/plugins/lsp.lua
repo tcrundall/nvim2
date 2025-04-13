@@ -38,11 +38,10 @@ return {
             return
           end
 
-          -- TODO: Work out why "completion" is nil
-          -- if client:supports_method('textDocument/completion') then
-          --   -- Enable auto-completion
-          --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
-          -- end
+          if client:supports_method("textDocument/completion") then
+            -- Enable auto-completion
+            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
+          end
 
           if client:supports_method("textDocument/formatting") then
             -- Format the current buffer on save
@@ -54,12 +53,12 @@ return {
             })
           end
 
-          if client:supports_method("textDocument/rename") then
-            -- Create a keymap for vim.lsp.buf.rename()
-          end
-          if client:supports_method("textDocument/implementation") then
-            -- Create a keymap for vim.lsp.buf.implementation
-          end
+          -- if client:supports_method("textDocument/rename") then
+          --   -- Create a keymap for vim.lsp.buf.rename()
+          -- end
+          -- if client:supports_method("textDocument/implementation") then
+          --   -- Create a keymap for vim.lsp.buf.implementation
+          -- end
         end,
       })
 

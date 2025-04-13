@@ -19,7 +19,7 @@ Have a sleek neovim configuration where I understand everything deeply
         - C#
         - lua
     - set up MVP from docs
-    - 
+    - set up keymaps to conveniently switch from loud to quite diagnostics
 - blink
 - [x] tmux navigator
 - treesitter (familiarise with user methods)
