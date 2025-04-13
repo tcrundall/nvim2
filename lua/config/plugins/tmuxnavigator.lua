@@ -9,6 +9,6 @@ return {
     { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
   },
   config = function()
-    vim.api.nvim_exec2("let g:tmux_navigator_disable_when_zoomed = 1", {})
+    vim.g.tmux_navigator_disable_when_zoomed = 1
   end,
 }
