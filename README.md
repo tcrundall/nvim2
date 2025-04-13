@@ -13,9 +13,13 @@ Have a sleek neovim configuration where I understand everything deeply
 ### Plugins
 
 - LSP
-    - python
-    - markdown
-    - C#
+    - languages
+        - python
+        - markdown
+        - C#
+        - lua
+    - set up MVP from docs
+    - 
 - blink
 - [x] tmux navigator
 - treesitter (familiarise with user methods)
@@ -61,3 +65,18 @@ asdfa sdf [some plugin](lua/config/plugins/init.lua#L100)
 
 asdfa sdf [some plugin](lua/config/plugins/init.lua)
 
+### LSP
+
+`:help lsp-defaults` for default bindings
+
+`:help lsp`: see new (for 0.11.0) way to set up lsp
+
+`:help lsp-config`: see nice wrapper for lsp
+
+`:chekchealth vim.lsp`
+
+ensure the executable is findable:
+`:echo executable('name-of-executable')`
+
+get diagnsotic options
+`:help vim.diagnostic.Opts`
