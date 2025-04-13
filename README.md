@@ -8,18 +8,43 @@ Efficient and effective text editor
 
 Have a sleek neovim configuration where I understand everything deeply
 
-## Brainstorm
-
-- [x] Quickly edit config
-- Fancy markdown reader
-- [x] Extend telescope to benefit me
-- Understand execution order (init.lua, after, etc.)
-  - use filetypes file properly
-- Understand treesitter, get comfortable using it in custom methods
-- Try out terminal in vim
-- Get AI actually working
-- Get go syntax highlighting working
-- Fancy autocompletion with blink
-- Manually set up lsp for deep understanding
-
 ## Organize
+
+### Plugins
+
+- LSP
+    - python
+    - markdown
+    - C#
+- blink
+- tmux navigator
+- treesitter and user methods
+- oatmeal
+- fugitive
+    - maps: unstage hunk
+
+### Skills
+
+- terminal
+
+### Extensions
+
+- link follower
+
+### Standard vim
+
+- filetypes
+
+### Advanced
+
+- treesitter embedded languages
+- telescope, disregard test files
+
+## Supporting material
+
+### Known issues on mac
+
+My mac struggles to compile treesitter parsers.
+Check temp dirs in `~/.local/share/nvim/tree-sitter-*` and try to manually compile (with make?).
+
+Don't spend too much time on this before mac is updated.
