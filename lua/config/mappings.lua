@@ -3,7 +3,7 @@ local map = vim.keymap.set
 map("n", "<A-u>", "<cmd>cnext<cr>")
 map("n", "<A-i>", "<cmd>cprev<cr>")
 
-map("n", "<esc>", "<cmd>noh<cr>")
+map("n", "<esc>", "<cmd>noh<cr><cmd>echo ''<cr>")
 
 map("t", "<esc><esc>", "<C-\\><C-N>")
 
