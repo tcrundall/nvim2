@@ -20,7 +20,8 @@ return {
     },
 
     sources = {
-      default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      -- default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      default = { "path", "snippets", "buffer" },
       providers = {
         lazydev = {
           name = "LazyDev",
