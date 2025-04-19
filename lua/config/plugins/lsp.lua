@@ -3,6 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "saghen/blink.cmp" },
+      { "Decodetalkers/csharpls-extended-lsp.nvim" },
     },
     opts = {
       servers = {
