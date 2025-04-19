@@ -29,6 +29,14 @@ return {
     end,
   },
   {
+    "dustinblackman/oatmeal.nvim",
+    cmd = { "Oatmeal" },
+    keys = {
+      { "<leader>om", mode = "n", desc = "Start Oatmeal session" },
+    },
+    opts = {},
+  },
+  {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup({
