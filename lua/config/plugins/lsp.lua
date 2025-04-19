@@ -7,9 +7,9 @@ return {
     opts = {
       servers = {
         lua_ls = {},
-        -- gopls = {},
-        pylsp = {},
-        -- csharp_ls = {},
+        gopls = {},
+        pyright = {},
+        csharp_ls = {},
       },
     },
     config = function(_, opts)
@@ -20,16 +20,6 @@ return {
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
-
-      vim.diagnostic.config({
-        virtual_text = false,
-        virtual_lines = true,
-        underline = false,
-        float = {},
-        update_in_insert = true,
-        severity_sort = true,
-        jump = { float = false },
-      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
@@ -62,15 +52,46 @@ return {
         end,
       })
 
-      -- vim.api.nvim_create_autocmd("FileType", {
-      --   pattern = "python",
-      --   callback = function(ev)
-      --     vim.lsp.start({
-      --       name = "python-lsp",
-      --       cmd = { "pylsp" },
-      --     })
-      --   end,
-      -- })
+      -- :help vim.diagnostic.Opts
+      vim.diagnostic.config({
+        underline = false,     -- underline cause of issue
+        virtual_text = true,   -- append issue to end of line as virtual text
+        signs = true,          -- add symbol in signs column
+        virtual_lines = false, -- describe issue in virutal lines below
+        float = {
+          border = "double",
+        },
+        update_in_insert = true,
+        severity_sort = true,
+        jump = {
+          float = true,
+        },
+      })
+
+      local diagnosticModeVerbose = false
+      vim.api.nvim_create_user_command("ToggleDiagnosticMode", function()
+        if diagnosticModeVerbose then
+          diagnosticModeVerbose = false
+          vim.diagnostic.config({
+            virtual_text = true,
+            virtual_lines = false,
+            signs = true,
+            jump = {
+              float = true,
+            },
+          })
+        else
+          diagnosticModeVerbose = true
+          vim.diagnostic.config({
+            virtual_text = false,
+            virtual_lines = true,
+            signs = false,
+            jump = {
+              float = false,
+            },
+          })
+        end
+      end, {})
     end,
   },
 }
