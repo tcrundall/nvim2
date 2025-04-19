@@ -14,18 +14,18 @@ Have a sleek neovim configuration where I understand everything deeply
 
 - LSP
     - languages
-        - python
+        - [x] python
         - markdown
-        - C#
-        - lua
-    - set up MVP from docs
-    - set up keymaps to conveniently switch from loud to quite diagnostics
-- blink
+        - [x] C#
+        - [x] lua
+    - [x] set up MVP from docs
+    - [x] set up keymaps to conveniently switch from loud to quite diagnostics
+- [x] blink
 - [x] tmux navigator
 - treesitter (familiarise with user methods)
-- oatmeal
-- fugitive
-    - maps: unstage hunk
+- [x] oatmeal
+- gitsigns
+    - [x] maps: unstage hunk
 - spell checker
 
 ### Skills
