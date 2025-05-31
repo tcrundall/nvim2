@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
       times_opened[filename] = 0
     end
     times_opened[filename] = times_opened[filename] + 1
-    if times_opened[filename] ~= 2 then
+    if times_opened[filename] >= 3 then
       -- For some reason, this event gets triggered twice
       -- and only on the second trigger does the set fold level persist
       return
