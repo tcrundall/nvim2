@@ -46,7 +46,32 @@ Have a sleek neovim configuration where I understand everything deeply
 - treesitter embedded languages
 - telescope, disregard test files
 
+### Misc
+
+- [ ] nicer fold titles
+
 ## Supporting material
+
+### Markdown Strikethrough
+
+**having** *issues* getting strikethrough to work: ~~this should be struck through~~
+~~this should be struck through~~
+
+Use for example `:highlight SpellBad gui=strikethrough`
+Compare with e.g. `:highlight SpellBad gui=bold`
+Activate spelling with `:set spell spellang=en`
+
+ghostty _can_ render strikethrough:
+```bash
+echo -e "\033[9mstrikethrough\033[0m"
+```
+
+But perhaps neovim doesn't recognise ghostty's capabilities
+
+#### Solution
+
+tmux was suppressing ghostty's strikethrough capabilities because $TERM was set to "tmux-256color"
+I solved this by setting `set -g default-terminal "xterm-ghostty"` in `~/repos/dot-files/tmux.conf`
 
 ### Known issues on mac
 

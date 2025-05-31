@@ -20,3 +20,9 @@ set.confirm = true
 -- set fold method based treesitter parsing
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+-- Comment
+-- Set conceal for pretty presentation of e.g. markdown
+vim.opt.conceallevel = 3
+
+vim.opt.textwidth = 100
