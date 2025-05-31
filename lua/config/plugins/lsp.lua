@@ -11,6 +11,7 @@ return {
         gopls = {},
         pyright = {},
         csharp_ls = {},
+        bashls = {},
       },
     },
     config = function(_, opts)
