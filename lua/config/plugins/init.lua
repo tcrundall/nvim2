@@ -21,7 +21,8 @@ return {
       { "<leader>gs", "<cmd>Git<cr>",                      desc = "[G]it [S]tatus" },
       { "<leader>gl", "<cmd>Git log -n 100<cr><C-W><S-L>", desc = "[G]it [L]og" },
     },
-    opts = {},
+    cmd = "Git",
+    config = function() end,
   },
   {
     "williamboman/mason.nvim",
