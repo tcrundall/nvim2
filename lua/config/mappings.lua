@@ -11,3 +11,6 @@ map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "*", "*zz")
 map("n", "#", "#zz")
+
+local log_file = vim.env.LOG_FILE or "~/log.md"
+map("n", "<leader>el", "<cmd>vs " .. log_file .. "<cr>")
