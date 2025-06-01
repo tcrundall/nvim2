@@ -1,5 +1,9 @@
 # My NeoVIM config 2.0
 
+## TODO
+
+- caseless searching
+
 ## Principle
 
 Efficient and effective text editor
