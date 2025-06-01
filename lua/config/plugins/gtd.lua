@@ -9,5 +9,7 @@ return {
   },
   keys = {
     { "<leader>ea", "<cmd>vsplit " .. next_actions_file .. "<cr>", mode = "n" },
+    { "<a-t>",      "<cmd>GtdToggleTargetAction<cr>",              mode = "n" },
+    { "<a-c>",      "<cmd>GtdToggleCheck<cr>",                     mode = "n" },
   },
 }
