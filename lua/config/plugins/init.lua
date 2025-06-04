@@ -2,7 +2,7 @@ return {
   "catppuccin/nvim", -- for my favourite daymode, catppuccin-frappe
   {
     "folke/tokyonight.nvim",
-    lazy = false,    -- load on startup
+    lazy = false,  -- load on startup
     priority = 1000, -- load first
     config = function()
       vim.cmd.colorscheme("tokyonight")
@@ -64,6 +64,12 @@ return {
         -- Load luvit types when the `vim.uv` word is found
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
+    },
+  },
+  {
+    "mbbill/undotree",
+    keys = {
+      { "<leader>u", "<cmd>UndotreeToggle<cr>" },
     },
   },
 }
