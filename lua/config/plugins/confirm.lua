@@ -2,8 +2,13 @@ return {
   "stevearc/conform.nvim",
   opts = {
     formatters_by_ft = {
+      cs = { "csharpier" },
       go = { "gofmt" },
+      json = { "jq" },
+      -- markdown = { "mdformat" }, -- too opinionated for me
       python = { "black", "autoflake", "isort" },
+      terraform = { "terraform_fmt" },
+      yaml = { "yq" },
       ["*"] = { "codespell" }, -- TODO: check how this works
       ["_"] = { "trim_whitespace" },
     },
