@@ -5,8 +5,30 @@ return {
     lazy = false,  -- load on startup
     priority = 1000, -- load first
     config = function()
-      vim.cmd.colorscheme("tokyonight")
+      vim.cmd.colorscheme("tokyonight-night")
     end,
+    keys = {
+      {
+        "<leader>thd",
+        function()
+          vim.cmd.colorscheme("tokyonight-night")
+          vim.cmd.colorscheme("tokyonight-night")
+        end,
+      },
+    },
+  },
+  {
+    "catppuccin/nvim",
+    opts = {},
+    keys = {
+      {
+        "<leader>thl",
+        function()
+          vim.cmd.colorscheme("catppuccin-latte")
+          vim.cmd.colorscheme("catppuccin-latte")
+        end,
+      },
+    },
   },
   {
     "echasnovski/mini.nvim",
