@@ -6,6 +6,7 @@ return {
       go = { "gofmt" },
       json = { "jq" },
       python = { "black", "autoflake", "isort" },
+      sh = { "shfmt" },
       terraform = { "terraform_fmt" },
       ["*"] = { "codespell" }, -- TODO: check how this works
       ["_"] = { "trim_whitespace" },
@@ -26,6 +27,9 @@ return {
           "--use-parentheses",
           "--line-width=120",
         },
+      },
+      shfmt = {
+        prepend_args = { "-i", "4" },
       },
     },
   },
