@@ -26,3 +26,6 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.conceallevel = 3
 
 vim.opt.textwidth = 100
+
+-- when searching, respect case. preceed search with `\c` to ignore case
+vim.opt.ignorecase = false
