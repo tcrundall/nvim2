@@ -5,7 +5,6 @@ return {
       cs = { "csharpier" },
       go = { "gofmt" },
       json = { "jq" },
-      markdown = { "mdformat" },
       python = { "black", "autoflake", "isort" },
       terraform = { "terraform_fmt" },
       yaml = { "yq" },
