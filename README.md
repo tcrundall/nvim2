@@ -31,6 +31,8 @@ Have a sleek neovim configuration where I understand everything deeply
 - gitsigns
     - [x] maps: unstage hunk
 - spell checker
+- autoformatter
+    - [ ] set up python (that is identical to precommit hooks)
 
 ### Skills
 
@@ -44,6 +46,7 @@ Have a sleek neovim configuration where I understand everything deeply
 ### Standard vim
 
 - filetypes
+- folding: retain current folds on re-opening file
 
 ### Advanced
 
