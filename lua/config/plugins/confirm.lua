@@ -2,6 +2,7 @@ return {
   "stevearc/conform.nvim",
   opts = {
     formatters_by_ft = {
+      go = { "gofmt" },
       python = { "black", "autoflake", "isort" },
       ["*"] = { "codespell" }, -- TODO: check how this works
       ["_"] = { "trim_whitespace" },
