@@ -7,7 +7,6 @@ return {
       json = { "jq" },
       python = { "black", "autoflake", "isort" },
       terraform = { "terraform_fmt" },
-      yaml = { "yamlfmt" },
       ["*"] = { "codespell" }, -- TODO: check how this works
       ["_"] = { "trim_whitespace" },
     },
