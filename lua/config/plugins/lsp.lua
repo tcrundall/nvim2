@@ -7,11 +7,14 @@ return {
     },
     opts = {
       servers = {
+        clangd = {},
+        cmake = {},
         lua_ls = {},
         gopls = {},
         pyright = {},
         csharp_ls = {},
         bashls = {},
+        zls = {},
       },
     },
     config = function(_, opts)
