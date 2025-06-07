@@ -29,7 +29,7 @@ return {
         },
       },
       shfmt = {
-        prepend_args = { "-i", "4" },
+        prepend_args = { "--case-indent", "-i", "2" },
       },
     },
   },
