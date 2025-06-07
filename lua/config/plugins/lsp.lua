@@ -1,3 +1,13 @@
+local bash_ls_settings = {
+  settings = {
+    bashIde = {
+      shfmt = {
+        caseIndent = true,
+      },
+    },
+  },
+}
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -7,16 +17,7 @@ return {
     },
     opts = {
       servers = {
-        bashls = {
-          settings = {
-            bashIde = {
-              shfmt = {
-                ignoreEditorConfig = false,
-                caseIndent = true,
-              },
-            },
-          },
-        },
+        bashls = bash_ls_settings,
         clangd = {},
         cmake = {},
         csharp_ls = {},
@@ -47,7 +48,6 @@ return {
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
           end
 
-          -- if client:supports_method("textDocument/formatting") and client.name ~= "bashls" then
           if client:supports_method("textDocument/formatting") then
             -- Format the current buffer on save
             vim.api.nvim_create_autocmd("BufWritePre", {
