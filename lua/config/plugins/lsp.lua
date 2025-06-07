@@ -8,12 +8,44 @@ local bash_ls_settings = {
   },
 }
 
+local function install_required_executables(servers)
+  local executables = vim.tbl_keys(servers)
+  executables = vim.tbl_extend("force", executables, {
+    "stylua",
+    -- "csharp-language-server", -- manually install on environments with dotnet
+    "bash-language-server",
+    "lua-language-server",
+    "shfmt",
+  })
+  local not_executables = {
+    "csharp_ls",
+    "bashls",
+    "lua_ls",
+    "cmake",
+    "clangd", -- not supported on arm
+  }
+  executables = vim.tbl_filter(function(element)
+    return not vim.tbl_contains(not_executables, element)
+  end, executables)
+
+  require("mason-tool-installer").setup({
+    ensure_installed = executables,
+  })
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "saghen/blink.cmp" },
       { "Decodetalkers/csharpls-extended-lsp.nvim" },
+      { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+      {
+        "williamboman/mason.nvim",
+        config = function()
+          require("mason").setup()
+        end,
+      },
     },
     opts = {
       servers = {
@@ -28,6 +60,8 @@ return {
       },
     },
     config = function(_, opts)
+      install_required_executables(opts.servers)
+
       local lspconfig = require("lspconfig")
       for server, config in pairs(opts.servers) do
         -- passing config.capabilities to blink.cmp merges with the capabilities in your
