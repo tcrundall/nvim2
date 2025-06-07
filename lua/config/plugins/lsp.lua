@@ -7,13 +7,22 @@ return {
     },
     opts = {
       servers = {
+        bashls = {
+          settings = {
+            bashIde = {
+              shfmt = {
+                ignoreEditorConfig = false,
+                caseIndent = true,
+              },
+            },
+          },
+        },
         clangd = {},
         cmake = {},
-        lua_ls = {},
-        gopls = {},
-        pyright = {},
         csharp_ls = {},
-        bashls = {},
+        gopls = {},
+        lua_ls = {},
+        pyright = {},
         zls = {},
       },
     },
@@ -38,6 +47,7 @@ return {
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
           end
 
+          -- if client:supports_method("textDocument/formatting") and client.name ~= "bashls" then
           if client:supports_method("textDocument/formatting") then
             -- Format the current buffer on save
             vim.api.nvim_create_autocmd("BufWritePre", {
@@ -63,9 +73,9 @@ return {
 
       -- :help vim.diagnostic.Opts
       vim.diagnostic.config({
-        underline = false, -- underline cause of issue
-        virtual_text = true, -- append issue to end of line as virtual text
-        signs = true, -- add symbol in signs column
+        underline = false,     -- underline cause of issue
+        virtual_text = true,   -- append issue to end of line as virtual text
+        signs = true,          -- add symbol in signs column
         virtual_lines = false, -- describe issue in virutal lines below
         float = {
           border = "double",
