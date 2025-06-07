@@ -47,12 +47,6 @@ return {
     config = function() end,
   },
   {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
     "dustinblackman/oatmeal.nvim",
     cmd = { "Oatmeal" },
     keys = {
