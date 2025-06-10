@@ -55,6 +55,7 @@ return {
         csharp_ls = {},
         gopls = {},
         lua_ls = {},
+        nil_ls = {},
         pyright = {},
         zls = {},
       },
