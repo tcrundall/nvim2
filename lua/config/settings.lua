@@ -5,6 +5,8 @@ set.relativenumber = true
 set.wrap = false
 
 set.shiftwidth = 4
+set.tabstop = 4
+set.expandtab = true
 
 set.splitbelow = true
 set.splitright = true
