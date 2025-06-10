@@ -60,7 +60,10 @@ return {
       },
     },
     config = function(_, opts)
-      install_required_executables(opts.servers)
+      -- nixos manages its own installations
+      if vim.env.HOST_NAME ~= "nixos" then
+        install_required_executables(opts.servers)
+      end
 
       local lspconfig = require("lspconfig")
       for server, config in pairs(opts.servers) do
