@@ -99,10 +99,10 @@ return {
 
       -- :help vim.diagnostic.Opts
       vim.diagnostic.config({
-        underline = false,     -- underline cause of issue
-        virtual_text = true,   -- append issue to end of line as virtual text
-        signs = true,          -- add symbol in signs column
-        virtual_lines = false, -- describe issue in virutal lines below
+        underline = false,                                                    -- underline cause of issue
+        virtual_text = { severity = { min = vim.diagnostic.severity.HINT } }, -- append issue to end of line as virtual text
+        signs = { severity = { min = vim.diagnostic.severity.HINT } },        -- add symbol in signs column
+        virtual_lines = false,                                                -- describe issue in virutal lines below
         float = {
           border = "double",
         },
@@ -110,32 +110,46 @@ return {
         severity_sort = true,
         jump = {
           float = true,
+          severity = { min = vim.diagnostic.severity.HINT },
         },
       })
 
-      local diagnosticModeVerbose = false
-      vim.api.nvim_create_user_command("ToggleDiagnosticMode", function()
-        if diagnosticModeVerbose then
-          diagnosticModeVerbose = false
-          vim.diagnostic.config({
-            virtual_text = true,
-            virtual_lines = false,
-            signs = true,
+      local diagnostic_hints_enable = true
+
+      vim.api.nvim_create_user_command("ToggleHints", function()
+        local diagnostic_hints_opts = {}
+        diagnostic_hints_enable = not diagnostic_hints_enable
+        print("Hints enabled: " .. tostring(diagnostic_hints_enable))
+
+        if diagnostic_hints_enable then
+          diagnostic_hints_opts = {
+            virtual_text = {
+              severity = { min = vim.diagnostic.severity.HINT },
+            },
+            signs = {
+              severity = { min = vim.diagnostic.severity.HINT },
+            },
             jump = {
               float = true,
+              severity = { min = vim.diagnostic.severity.HINT },
             },
-          })
+          }
         else
-          diagnosticModeVerbose = true
-          vim.diagnostic.config({
-            virtual_text = false,
-            virtual_lines = true,
-            signs = false,
-            jump = {
-              float = false,
+          diagnostic_hints_opts = {
+            virtual_text = {
+              severity = { min = vim.diagnostic.severity.WARN },
             },
-          })
+            signs = {
+              severity = { min = vim.diagnostic.severity.WARN },
+            },
+            jump = {
+              float = true,
+              severity = { min = vim.diagnostic.severity.WARN },
+            },
+          }
         end
+
+        vim.diagnostic.config(diagnostic_hints_opts)
       end, {})
     end,
   },
