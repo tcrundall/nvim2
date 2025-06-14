@@ -5,6 +5,7 @@
 ### Critical
 
 - [ ] debugger
+- [ ] fix file completion with `:cd`
 
 ### Plugins
 
@@ -13,7 +14,9 @@
         - [x] python
         - markdown
         - [x] C#
+            - suppress "info messages" but show popups
         - [x] lua
+        - [x] go
     - [x] set up MVP from docs
     - [x] set up upkeymaps to conveniently switch from loud to quite diagnostics
 - [x] blink
@@ -24,7 +27,7 @@
     - [x] maps: unstage hunk
 - spell checker
 - autoformatter
-    - [ ] set up python (that is identical to precommit hooks)
+    - [x] set up python (that is identical to precommit hooks)
 
 ### Skills
 
@@ -35,6 +38,8 @@
 - link follower
     - extend to make use of `gx` / `vim.ui.open()`
 - markdown box checking
+- open api veiwer
+- mermaid builder
 
 ### Standard vim
 
@@ -52,6 +57,7 @@
 
 ### Misc
 
+- [ ] auto vertical split
 - [ ] nicer fold titles
     - [ ] fix conceal (folded ```bash``` blocks vanish completely)
     - [ ] fold in go respects tabs
