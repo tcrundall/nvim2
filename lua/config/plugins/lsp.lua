@@ -24,41 +24,34 @@ local nix_servers = {
   nil_ls = {},
 }
 
-local servers = {}
+local base_executables = {
+  "autoflake",
+  "bash-language-server",
+  "black",
+  "clangd",
+  "isort",
+  "lua-language-server",
+  "pyright",
+  "shellcheck",
+  "shfmt",
+  "stylua",
+  "zls",
+}
 
-servers = vim.tbl_extend("force", servers, base_servers)
+local flower_executables = {
+  -- "csharp-language-server", -- easier to install with `dotnet tool install csharp-ls`
+  "gopls",
+}
+
+local servers = vim.tbl_extend("force", {}, base_servers)
+local executables = vim.tbl_extend("force", {}, base_executables)
 
 if vim.env.NVIM_FLOWER == "true" then
   servers = vim.tbl_extend("force", servers, flower_servers)
+  executables = vim.tbl_extend("force", executables, flower_executables)
 end
-
 if vim.env.NVIM_NIX == "true" then
   servers = vim.tbl_extend("force", servers, nix_servers)
-end
-
-local function install_required_executables(servers)
-  local executables = vim.tbl_keys(servers)
-  executables = vim.tbl_extend("force", executables, {
-    "stylua",
-    -- "csharp-language-server", -- manually install on environments with dotnet
-    "bash-language-server",
-    "lua-language-server",
-    "shfmt",
-  })
-  local not_executables = {
-    "csharp_ls",
-    "bashls",
-    "lua_ls",
-    "cmake",
-    "clangd", -- not supported on arm
-  }
-  executables = vim.tbl_filter(function(element)
-    return not vim.tbl_contains(not_executables, element)
-  end, executables)
-
-  require("mason-tool-installer").setup({
-    ensure_installed = executables,
-  })
 end
 
 return {
@@ -81,7 +74,9 @@ return {
     config = function(_, opts)
       -- nixos manages its own installations
       if vim.env.HOST_NAME ~= "nixos" then
-        install_required_executables(opts.servers)
+        require("mason-tool-installer").setup({
+          ensure_installed = executables,
+        })
       end
 
       local lspconfig = require("lspconfig")
