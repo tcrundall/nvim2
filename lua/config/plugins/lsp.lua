@@ -39,6 +39,7 @@ return {
     dependencies = {
       { "saghen/blink.cmp" },
       { "Decodetalkers/csharpls-extended-lsp.nvim" },
+      { "j-hui/fidget.nvim",                       opts = {} },
       {
         "williamboman/mason.nvim",
         config = function()
