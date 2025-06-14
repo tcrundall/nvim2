@@ -8,6 +8,7 @@
 - [x] fix file completion with `:cd` (could not reproduce), though keep in mind `:cd %:h` to change
   to directory of current file
 - [x] jump to type definition
+- [ ] grep and search word work when in e.g. plugin dirs
 
 ### Plugins
 
@@ -30,6 +31,7 @@
 - spell checker
 - autoformatter
     - [x] set up python (that is identical to precommit hooks)
+- [x] add border to hover window
 
 ### Skills
 
@@ -59,6 +61,7 @@
 
 ### Misc
 
+- [ ] better status line
 - [ ] auto vertical split
 - [ ] nicer fold titles
     - [ ] fix conceal (folded ```bash``` blocks vanish completely)
