@@ -2,10 +2,12 @@ return {
   "catppuccin/nvim", -- for my favourite daymode, catppuccin-frappe
   {
     "folke/tokyonight.nvim",
-    lazy = false,  -- load on startup
+    lazy = false,    -- load on startup
     priority = 1000, -- load first
     config = function()
-      vim.cmd.colorscheme("tokyonight-night")
+      if vim.env.THEME == "DARK_MODE" then
+        vim.cmd.colorscheme("tokyonight-night")
+      end
     end,
     keys = {
       {
@@ -20,6 +22,7 @@ return {
   {
     "catppuccin/nvim",
     opts = {},
+    lazy = false, -- load on startup
     keys = {
       {
         "<leader>thl",
@@ -29,6 +32,11 @@ return {
         end,
       },
     },
+    config = function()
+      if vim.env.THEME == "LIGHT_MODE" then
+        vim.cmd.colorscheme("catppuccin-latte")
+      end
+    end,
   },
   {
     "echasnovski/mini.nvim",
