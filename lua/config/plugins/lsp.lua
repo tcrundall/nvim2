@@ -1,12 +1,40 @@
-local bash_ls_settings = {
-  settings = {
-    bashIde = {
-      shfmt = {
-        caseIndent = true,
+local base_servers = {
+  bashls = {
+    settings = {
+      bashIde = {
+        shfmt = {
+          caseIndent = true,
+        },
       },
     },
   },
+  lua_ls = {},
+  pyright = {},
+  zls = {},
 }
+
+local flower_servers = {
+  clangd = {},
+  cmake = {},
+  csharp_ls = {},
+  gopls = {},
+}
+
+local nix_servers = {
+  nil_ls = {},
+}
+
+local servers = {}
+
+servers = vim.tbl_extend("force", servers, base_servers)
+
+if vim.env.NVIM_FLOWER == "true" then
+  servers = vim.tbl_extend("force", servers, flower_servers)
+end
+
+if vim.env.NVIM_NIX == "true" then
+  servers = vim.tbl_extend("force", servers, nix_servers)
+end
 
 local function install_required_executables(servers)
   local executables = vim.tbl_keys(servers)
@@ -48,17 +76,7 @@ return {
       },
     },
     opts = {
-      servers = {
-        bashls = bash_ls_settings,
-        clangd = {},
-        cmake = {},
-        csharp_ls = {},
-        gopls = {},
-        lua_ls = {},
-        nil_ls = {},
-        pyright = {},
-        zls = {},
-      },
+      servers = servers,
     },
     config = function(_, opts)
       -- nixos manages its own installations
@@ -111,9 +129,9 @@ return {
 
       -- :help vim.diagnostic.Opts
       vim.diagnostic.config({
-        underline = false,     -- underline cause of issue
-        virtual_text = true,   -- append issue to end of line as virtual text
-        signs = true,          -- add symbol in signs column
+        underline = false, -- underline cause of issue
+        virtual_text = true, -- append issue to end of line as virtual text
+        signs = true, -- add symbol in signs column
         virtual_lines = false, -- describe issue in virutal lines below
         float = {
           border = "double",
