@@ -16,7 +16,7 @@ local base_lsp_executables = {
 }
 
 local flower_lsp_executables = {
-  -- want to use custom patch of 0.16.0
+  -- want to use custom patch of 0.16.0 without annoying start up messages
   -- { "csharp-language-server", version = "0.16.0" }, -- 0.17.0 requires dotnet 9
   { "gopls", version = "v0.18.1" },
 }
