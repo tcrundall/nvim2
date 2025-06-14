@@ -16,7 +16,9 @@ local base_servers = {
 local flower_servers = {
   clangd = {},
   cmake = {},
-  csharp_ls = {},
+  csharp_ls = {
+    cmd = { "csharp-ls-0.16.0-patched" },
+  },
   gopls = {},
 }
 
