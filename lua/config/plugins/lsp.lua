@@ -66,8 +66,16 @@ return {
             return
           end
 
+          local floating_window_opts = {
+            border = "single",
+            title_pos = "left",
+          }
+
+          vim.api.nvim_create_user_command("Hover", function()
+            vim.lsp.buf.hover(floating_window_opts)
+          end, {})
+
           if client:supports_method("textDocument/completion") then
-            -- Enable auto-completion
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
           end
 
@@ -85,15 +93,27 @@ return {
             vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition)
           end
 
-          -- if client:supports_method("textDocument/codeAction") then
-          --   -- Create a keymap for vim.lsp.buf.code_action
-          -- end
-          -- if client:supports_method("textDocument/rename") then
-          --   -- Create a keymap for vim.lsp.buf.rename()
-          -- end
-          -- if client:supports_method("textDocument/implementation") then
-          --   -- Create a keymap for vim.lsp.buf.implementation
-          -- end
+          if client:supports_method("textDocument/hover") then
+            vim.keymap.set("n", "K", function()
+              vim.lsp.buf.hover(floating_window_opts)
+            end, { buffer = args.buf })
+          end
+
+          if client:supports_method("textDocument/signatureHelp") then
+            vim.keymap.set("i", "<c-s>", function()
+              vim.lsp.buf.signature_help(floating_window_opts)
+            end, {})
+          end
+
+          if client:supports_method("textDocument/codeAction") then
+            -- Create a keymap for vim.lsp.buf.code_action
+          end
+          if client:supports_method("textDocument/rename") then
+            -- Create a keymap for vim.lsp.buf.rename()
+          end
+          if client:supports_method("textDocument/implementation") then
+            -- Create a keymap for vim.lsp.buf.implementation
+          end
         end,
       })
 
