@@ -83,24 +83,27 @@ return {
             })
           end
 
-          vim.keymap.set("n", "<leader>ca", function()
-            vim.lsp.buf.code_action()
-          end, {})
+          if client:supports_method("textDocument/typeDefinition") then
+            vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition)
+          end
 
-          if client:supports_method("textDocument/rename") then
-            -- Create a keymap for vim.lsp.buf.rename()
-          end
-          if client:supports_method("textDocument/implementation") then
-            -- Create a keymap for vim.lsp.buf.implementation
-          end
+          -- if client:supports_method("textDocument/codeAction") then
+          --   -- Create a keymap for vim.lsp.buf.code_action
+          -- end
+          -- if client:supports_method("textDocument/rename") then
+          --   -- Create a keymap for vim.lsp.buf.rename()
+          -- end
+          -- if client:supports_method("textDocument/implementation") then
+          --   -- Create a keymap for vim.lsp.buf.implementation
+          -- end
         end,
       })
 
       -- :help vim.diagnostic.Opts
       vim.diagnostic.config({
-        underline = false, -- underline cause of issue
-        virtual_text = true, -- append issue to end of line as virtual text
-        signs = true, -- add symbol in signs column
+        underline = false,     -- underline cause of issue
+        virtual_text = true,   -- append issue to end of line as virtual text
+        signs = true,          -- add symbol in signs column
         virtual_lines = false, -- describe issue in virutal lines below
         float = {
           border = "double",
