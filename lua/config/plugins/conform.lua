@@ -1,5 +1,14 @@
 return {
   "stevearc/conform.nvim",
+  dependencies = {
+    { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    {
+      "williamboman/mason.nvim",
+      config = function()
+        require("mason").setup()
+      end,
+    },
+  },
   opts = {
     formatters_by_ft = {
       nix = { "alejandra" },

@@ -24,31 +24,10 @@ local nix_servers = {
   nil_ls = {},
 }
 
-local base_executables = {
-  "autoflake",
-  "bash-language-server",
-  "black",
-  "clangd",
-  "isort",
-  "lua-language-server",
-  "pyright",
-  "shellcheck",
-  "shfmt",
-  "stylua",
-  "zls",
-}
-
-local flower_executables = {
-  -- "csharp-language-server", -- easier to install with `dotnet tool install csharp-ls`
-  "gopls",
-}
-
-local servers = vim.tbl_extend("force", {}, base_servers)
-local executables = vim.tbl_extend("force", {}, base_executables)
-
+local servers = {}
+servers = vim.tbl_extend("force", servers, base_servers)
 if vim.env.NVIM_FLOWER == "true" then
   servers = vim.tbl_extend("force", servers, flower_servers)
-  executables = vim.tbl_extend("force", executables, flower_executables)
 end
 if vim.env.NVIM_NIX == "true" then
   servers = vim.tbl_extend("force", servers, nix_servers)
@@ -60,7 +39,6 @@ return {
     dependencies = {
       { "saghen/blink.cmp" },
       { "Decodetalkers/csharpls-extended-lsp.nvim" },
-      { "WhoIsSethDaniel/mason-tool-installer.nvim" },
       {
         "williamboman/mason.nvim",
         config = function()
@@ -72,13 +50,6 @@ return {
       servers = servers,
     },
     config = function(_, opts)
-      -- nixos manages its own installations
-      if vim.env.HOST_NAME ~= "nixos" then
-        require("mason-tool-installer").setup({
-          ensure_installed = executables,
-        })
-      end
-
       local lspconfig = require("lspconfig")
       for server, config in pairs(opts.servers) do
         -- passing config.capabilities to blink.cmp merges with the capabilities in your
