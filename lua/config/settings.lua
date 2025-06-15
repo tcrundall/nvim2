@@ -31,3 +31,6 @@ vim.opt.textwidth = 100
 
 -- when searching, respect case. preceed search with `\c` to ignore case
 vim.opt.ignorecase = false
+
+-- save undo file history
+vim.o.undofile = true
