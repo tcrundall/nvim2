@@ -35,5 +35,9 @@ return {
     vim.keymap.set("n", "gN", function()
       gitsigns.prev_hunk()
     end, { desc = "[G]it go to previous hunk" })
+
+    vim.keymap.set("n", "gp", function()
+      gitsigns.prev_hunk()
+    end, { desc = "[G]it go to [P]revious hunk" })
   end,
 }
