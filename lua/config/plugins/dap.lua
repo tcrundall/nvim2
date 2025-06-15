@@ -6,10 +6,27 @@ return {
   config = function()
     local dap = require("dap")
 
-    require("dap-python").setup("python3", { include_configs = true })
-    vim.keymap.set("n", "<leader>dm", function()
-      require("dap-python").test_method()
-    end)
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+      group = vim.api.nvim_create_augroup("dap-py", {}),
+      pattern = "*.py",
+      callback = function()
+        print("In python autocommand")
+        require("dap-python").setup("python3", {
+          include_configs = true,
+          redirectOutput = true,
+          showReturnValue = true,
+          justMyCode = false,
+        })
+
+        vim.keymap.set("n", "<leader>dm", function()
+          require("dap-python").test_method({ test_runner = "pytest" })
+        end, { desc = "[D]ebug: python [M]ethod" })
+
+        vim.keymap.set("n", "<leader>dc", function()
+          require("dap-python").test_class({ test_runner = "pytest" })
+        end, { desc = "[D]ebug: python [C]lass" })
+      end,
+    })
 
     vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
     vim.fn.sign_define("DapStopped", { text = "➡️", texthl = "", linehl = "", numhl = "" })
@@ -59,12 +76,11 @@ return {
     vim.keymap.set("n", "<Leader>dd", function()
       require("dap").down()
     end)
-    vim.keymap.set({ "n", "v" }, "<Leader>dc", function()
+    vim.keymap.set({ "n", "v" }, "<Leader>dt", function()
       require("dap").run_to_cursor()
     end)
     vim.keymap.set({ "n", "v" }, "<Leader>dk", function()
-      local hover_widget = require("dap.ui.widgets").hover()
-      -- hover_widget.close()
+      require("dap.ui.widgets").hover()
     end)
     vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
       require("dap").focus_frame()
