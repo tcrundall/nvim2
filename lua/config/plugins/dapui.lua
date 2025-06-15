@@ -39,20 +39,26 @@ return {
         {
           elements = {
             {
-              id = "watches",
-              size = 0.8,
+              id = "repl",
+              size = 0.5,
             },
             {
-              id = "repl",
-              size = 0.2,
+              id = "console",
+              size = 0.5,
             },
-            -- {
-            --   id = "console",
-            --   size = 0.3,
-            -- },
           },
           position = "bottom",
           size = 10,
+        },
+        {
+          elements = {
+            {
+              id = "watches",
+              size = 1.0,
+            },
+          },
+          position = "bottom",
+          size = 5,
         },
         {
           elements = {
