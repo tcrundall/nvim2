@@ -10,7 +10,6 @@ return {
       group = vim.api.nvim_create_augroup("dap-py", {}),
       pattern = "*.py",
       callback = function()
-        print("In python autocommand")
         require("dap-python").setup("python3", {
           include_configs = true,
           redirectOutput = true,
