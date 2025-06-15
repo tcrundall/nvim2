@@ -2,6 +2,7 @@ return {
   "mfussenegger/nvim-dap",
   config = function()
     local dap = require("dap")
+
     dap.adapters.python = {
       type = "executable",
       command = "python",
@@ -14,9 +15,6 @@ return {
         request = "launch",
         name = "Launch file",
         program = "${file}",
-        pythonPath = function()
-          return ".venv/bin/python"
-        end,
       },
     }
 
