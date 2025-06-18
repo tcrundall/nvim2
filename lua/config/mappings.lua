@@ -2,6 +2,8 @@ local map = vim.keymap.set
 
 map("n", "<A-u>", "<cmd>cnext<cr>")
 map("n", "<A-i>", "<cmd>cprev<cr>")
+map("n", "<A-o>", "<cmd>lnext<cr>")
+map("n", "<A-p>", "<cmd>lprev<cr>")
 
 map("n", "<esc>", "<cmd>noh<cr><cmd>echo ''<cr>")
 
