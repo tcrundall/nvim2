@@ -24,6 +24,10 @@ local nix_servers = {
   nil_ls = {},
 }
 
+local rpi_servers = {
+  gh_actions_ls = {},
+}
+
 local servers = {}
 servers = vim.tbl_extend("force", servers, base_servers)
 if vim.env.NVIM_FLOWER == "true" then
@@ -31,6 +35,9 @@ if vim.env.NVIM_FLOWER == "true" then
 end
 if vim.env.NVIM_NIX == "true" then
   servers = vim.tbl_extend("force", servers, nix_servers)
+end
+if vim.env.NVIM_RPI == "true" then
+  servers = vim.tbl_extend("force", servers, rpi_servers)
 end
 
 return {
