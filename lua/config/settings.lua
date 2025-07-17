@@ -29,8 +29,11 @@ vim.opt.conceallevel = 3
 
 vim.opt.textwidth = 100
 
--- when searching, respect case. preceed search with `\c` to ignore case
+-- when searching, respect case. precede search with `\c` to ignore case
 vim.opt.ignorecase = false
 
 -- save undo file history
 vim.o.undofile = true
+
+-- disable spell checker from caring about capitalizing sentence start
+vim.o.spellcapcheck = ""
