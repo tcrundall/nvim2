@@ -20,8 +20,16 @@ set.signcolumn = "yes"
 set.confirm = true
 
 -- set fold method based treesitter parsing
+_G.get_fold_text = function()
+  local line_length = 100
+  local n_folded_lines = vim.v.foldend - vim.v.foldstart + 1
+  local fold_title = vim.fn.getline(vim.v.foldstart) .. string.rep(" ", line_length)
+  local folded_lines_tag = string.format("  + %s lines", n_folded_lines)
+  return (string.sub(fold_title, 1, line_length - string.len(folded_lines_tag)) .. folded_lines_tag)
+end
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = "v:lua.get_fold_text()"
 
 -- Comment
 -- Set conceal for pretty presentation of e.g. markdown
