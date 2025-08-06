@@ -5,6 +5,9 @@
 ### Critical
 
 - [ ] debugger
+    - [x] python
+    - [ ] go
+    - [ ] c#
 - [x] fix file completion with `:cd` (could not reproduce), though keep in mind `:cd %:h` to change
   to directory of current file
 - [x] jump to type definition
