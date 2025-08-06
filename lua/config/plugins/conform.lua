@@ -14,7 +14,6 @@ return {
       nix = { "alejandra" },
       cs = { "csharpier" },
       go = { "gofmt" },
-      json = { "jq" },
       python = { "black", "autoflake", "isort" },
       terraform = { "terraform_fmt" },
       ["*"] = { "codespell" }, -- TODO: check how this works
