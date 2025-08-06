@@ -126,10 +126,10 @@ return {
 
       -- :help vim.diagnostic.Opts
       vim.diagnostic.config({
-        underline = false,                                                    -- underline cause of issue
+        underline = false,                                                -- underline cause of issue
         virtual_text = { severity = { min = vim.diagnostic.severity.HINT } }, -- append issue to end of line as virtual text
-        signs = { severity = { min = vim.diagnostic.severity.HINT } },        -- add symbol in signs column
-        virtual_lines = false,                                                -- describe issue in virutal lines below
+        signs = { severity = { min = vim.diagnostic.severity.HINT } },    -- add symbol in signs column
+        virtual_lines = false,                                            -- describe issue in virutal lines below
         float = {
           border = "double",
         },
