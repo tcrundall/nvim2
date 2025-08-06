@@ -5,3 +5,5 @@ vim.api.nvim_buf_set_keymap(
   "<cmd>w<cr><cmd>!python3 %<cr>",
   { desc = "e[X]ecute current python file" }
 )
+
+vim.o.textwidth = 0
