@@ -8,4 +8,5 @@ vim.g.loaded_netrwPlugin = 1
 require("config.settings")
 require("config.lazy")
 require("config.mappings")
+require("config.usercommands")
 require("config.autocmds")
