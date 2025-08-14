@@ -28,6 +28,24 @@ local rpi_servers = {
   gh_actions_ls = {},
 }
 
+local mac_servers = {
+  ts_ls = {
+    settings = {
+      javascript = {
+        format = {
+          indentSize = 2,
+        },
+      },
+      typescript = {
+        format = {
+          indentSize = 2,
+        },
+      },
+    },
+  },
+  eslint = {},
+}
+
 local servers = {}
 servers = vim.tbl_extend("force", servers, base_servers)
 if vim.env.NVIM_FLOWER == "true" then
@@ -38,6 +56,9 @@ if vim.env.NVIM_NIX == "true" then
 end
 if vim.env.NVIM_RPI == "true" then
   servers = vim.tbl_extend("force", servers, rpi_servers)
+end
+if vim.env.NVIM_MAC == "true" then
+  servers = vim.tbl_extend("force", servers, mac_servers)
 end
 
 return {
