@@ -16,6 +16,9 @@ return {
       go = { "gofmt" },
       python = { "black", "autoflake", "isort" },
       terraform = { "terraform_fmt" },
+      typescriptreact = { "biome" },
+      typescript = { "biome" },
+      javascript = { "biome" },
       ["*"] = { "codespell" }, -- TODO: check how this works
       ["_"] = { "trim_whitespace" },
     },
