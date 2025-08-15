@@ -12,6 +12,7 @@ return {
     strategies = {
       chat = {
         adapter = "my_openai",
+        model = vim.env.AI_INLINE_MODEL,
       },
       inline = {
         adapter = "my_openai",
@@ -19,6 +20,7 @@ return {
       },
       cmd = {
         adapter = "my_openai",
+        model = vim.env.AI_INLINE_MODEL,
       },
     },
     adapters = {
