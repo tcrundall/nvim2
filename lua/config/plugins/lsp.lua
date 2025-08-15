@@ -18,6 +18,7 @@ local flower_servers = {
   cmake = {},
   -- csharp_ls is setup in ./csharpls_extended.lua
   gopls = {},
+  ts_ls = {},
 }
 
 local nix_servers = {
@@ -48,7 +49,7 @@ local mac_servers = {
 
 local servers = {}
 servers = vim.tbl_extend("force", servers, base_servers)
-if vim.env.NVIM_FLOWER == "true" then
+if vim.env.NVIM_FLOWER == "true" or vim.env.NVIM_SAKURA == "true" then
   servers = vim.tbl_extend("force", servers, flower_servers)
 end
 if vim.env.NVIM_NIX == "true" then
@@ -107,7 +108,7 @@ return {
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
           end
 
-          if client:supports_method("textDocument/formatting") then
+          if client:supports_method("textDocument/formatting") and client.name ~= "ts_ls" then
             -- Format the current buffer on save
             vim.api.nvim_create_autocmd("BufWritePre", {
               buffer = args.buf,
