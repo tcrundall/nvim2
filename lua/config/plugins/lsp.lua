@@ -19,6 +19,8 @@ local flower_servers = {
   -- csharp_ls is setup in ./csharpls_extended.lua
   gopls = {},
   ts_ls = {},
+  cssls = {},
+  jsonls = {},
 }
 
 local nix_servers = {
@@ -108,7 +110,12 @@ return {
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
           end
 
-          if client:supports_method("textDocument/formatting") and client.name ~= "ts_ls" then
+          if
+              client:supports_method("textDocument/formatting")
+              and client.name ~= "ts_ls"
+              and client.name ~= "cssls"
+              and client.name ~= "jsonls"
+          then
             -- Format the current buffer on save
             vim.api.nvim_create_autocmd("BufWritePre", {
               buffer = args.buf,
