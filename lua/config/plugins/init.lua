@@ -101,4 +101,7 @@ return {
       vim.g.undotree_SplitWidth = 50
     end,
   },
+  {
+    "shortcuts/no-neck-pain.nvim",
+  },
 }
