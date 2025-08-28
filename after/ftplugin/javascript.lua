@@ -6,5 +6,5 @@ vim.api.nvim_buf_set_keymap(
   "n",
   "<leader><leader>x",
   "<cmd>w<cr><cmd>!node %<cr>",
-  { desc = "e[X]ecute current typescriptreact file" }
+  { desc = "e[X]ecute current javascript file" }
 )
