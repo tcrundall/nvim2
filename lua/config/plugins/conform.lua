@@ -10,6 +10,7 @@ return {
     },
   },
   opts = {
+    -- log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
       nix = { "alejandra" },
       cs = { "csharpier" },
@@ -19,14 +20,24 @@ return {
       typescriptreact = { "biome" },
       typescript = { "biome" },
       javascript = { "biome" },
+      css = { "biome" },
+      html = { "superhtml" },
       ["*"] = { "codespell" }, -- TODO: check how this works
       ["_"] = { "trim_whitespace" },
     },
     format_on_save = {
-      lsp_format = "fallback",
+      -- lsp_format = "fallback",
       timeout_ms = 750,
     },
     formatters = {
+      biome = {
+        -- These override repo specific configs (e.g. biome.json)
+        -- append_args = {
+        --   "--indent-style=space",
+        --   "--indent-width=2",
+        --   "--format-with-errors=true",
+        -- },
+      },
       black = {
         prepend_args = { "-l", "120" },
       },
