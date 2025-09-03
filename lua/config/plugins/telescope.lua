@@ -63,7 +63,7 @@ return {
     })
 
     vim.keymap.set("n", "<leader>en", function()
-      builtin.find_files({ cwd = "~/Repos/notes" })
+      builtin.find_files({ cwd = "~/repos/notes" })
     end)
 
     vim.keymap.set("n", "<leader>sF", function()
