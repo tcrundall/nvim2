@@ -48,8 +48,9 @@ return {
   {
     "tpope/vim-fugitive",
     keys = {
-      { "<leader>gs", "<cmd>Git<cr>",                      desc = "[G]it [S]tatus" },
-      { "<leader>gl", "<cmd>Git log -n 100<cr><C-W><S-L>", desc = "[G]it [L]og" },
+      { "<leader>gs", "<cmd>Git<cr>",                                desc = "[G]it [S]tatus" },
+      { "<leader>gl", "<cmd>Git log -n 100<cr><C-W><S-L>",           desc = "[G]it [L]og" },
+      { "<leader>go", "<cmd>Git log --oneline -n 100<cr><C-W><S-L>", desc = "[G]it log [O]neline" },
     },
     cmd = "Git",
     config = function() end,
