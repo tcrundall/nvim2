@@ -50,7 +50,9 @@ local mac_servers = {
 }
 
 local servers = {}
-servers = vim.tbl_extend("force", servers, base_servers)
+if vim.env.NVIM_ANDOROID ~= "true" then
+  servers = vim.tbl_extend("force", servers, base_servers)
+end
 if vim.env.NVIM_FLOWER == "true" or vim.env.NVIM_SAKURA == "true" then
   servers = vim.tbl_extend("force", servers, flower_servers)
 end
