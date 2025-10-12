@@ -1,3 +1,7 @@
+if vim.env.NVIM_ANDROID == "true" then
+  return {}
+end
+
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {

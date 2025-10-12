@@ -1,3 +1,7 @@
+if vim.env.NVIM_ANDROID == "true" then
+  return {}
+end
+
 local base_formatter_executables = {
   { "autoflake",  version = "2.3.1" },
   { "black",      version = "25.1.0" },
@@ -21,13 +25,11 @@ local flower_lsp_executables = {
 }
 
 local executables = {}
-if vim.env.NVIM_ANDROID ~= "true" then
-  executables = vim.list_extend(executables, base_formatter_executables)
-  executables = vim.list_extend(executables, base_lsp_executables)
+executables = vim.list_extend(executables, base_formatter_executables)
+executables = vim.list_extend(executables, base_lsp_executables)
 
-  if vim.env.NVIM_FLOWER == "true" then
-    executables = vim.list_extend(executables, flower_lsp_executables)
-  end
+if vim.env.NVIM_FLOWER == "true" then
+  executables = vim.list_extend(executables, flower_lsp_executables)
 end
 
 return {

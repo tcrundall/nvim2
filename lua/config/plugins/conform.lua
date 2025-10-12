@@ -1,7 +1,18 @@
-opts = {}
+if vim.env.NVIM_ANDROID == "true" then
+  return {}
+end
 
-if vim.env.NVIM_ANDROID ~= "true" then
-  print("nit and")
+return {
+  "stevearc/conform.nvim",
+  dependencies = {
+    { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    {
+      "williamboman/mason.nvim",
+      config = function()
+        require("mason").setup()
+      end,
+    },
+  },
   opts = {
     -- log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
@@ -44,19 +55,5 @@ if vim.env.NVIM_ANDROID ~= "true" then
         },
       },
     },
-  }
-end
-
-return {
-  "stevearc/conform.nvim",
-  dependencies = {
-    { "WhoIsSethDaniel/mason-tool-installer.nvim" },
-    {
-      "williamboman/mason.nvim",
-      config = function()
-        require("mason").setup()
-      end,
-    },
   },
-  opts = opts,
 }

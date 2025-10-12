@@ -1,3 +1,7 @@
+if vim.env.NVIM_ANDROID == "true" then
+  return {}
+end
+
 local base_servers = {
   bashls = {
     settings = {
@@ -50,20 +54,20 @@ local mac_servers = {
 }
 
 local servers = {}
-if vim.env.NVIM_ANDROID ~= "true" then
+if vim.env.NVIM_ANDOROID ~= "true" then
   servers = vim.tbl_extend("force", servers, base_servers)
-  if vim.env.NVIM_FLOWER == "true" or vim.env.NVIM_SAKURA == "true" then
-    servers = vim.tbl_extend("force", servers, flower_servers)
-  end
-  if vim.env.NVIM_NIX == "true" then
-    servers = vim.tbl_extend("force", servers, nix_servers)
-  end
-  if vim.env.NVIM_RPI == "true" then
-    servers = vim.tbl_extend("force", servers, rpi_servers)
-  end
-  if vim.env.NVIM_MAC == "true" then
-    servers = vim.tbl_extend("force", servers, mac_servers)
-  end
+end
+if vim.env.NVIM_FLOWER == "true" or vim.env.NVIM_SAKURA == "true" then
+  servers = vim.tbl_extend("force", servers, flower_servers)
+end
+if vim.env.NVIM_NIX == "true" then
+  servers = vim.tbl_extend("force", servers, nix_servers)
+end
+if vim.env.NVIM_RPI == "true" then
+  servers = vim.tbl_extend("force", servers, rpi_servers)
+end
+if vim.env.NVIM_MAC == "true" then
+  servers = vim.tbl_extend("force", servers, mac_servers)
 end
 
 return {
