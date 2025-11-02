@@ -22,7 +22,8 @@ return {
   {
     "catppuccin/nvim",
     opts = {},
-    lazy = false, -- load on startup
+    lazy = false,   -- load on startup
+    priority = 999, -- load first
     keys = {
       {
         "<leader>thl",
