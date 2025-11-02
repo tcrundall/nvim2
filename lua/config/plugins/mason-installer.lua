@@ -15,7 +15,7 @@ local base_lsp_executables = {
   { "bash-language-server", version = "5.6.0" },
   { "lua-language-server",  version = "3.14.0" },
   { "pyright",              version = "1.1.402" },
-  { "zls",                  version = "0.14.0" },
+  { "zls",                  version = "0.15.0" },
 }
 
 local flower_lsp_executables = {
