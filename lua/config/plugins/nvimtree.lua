@@ -14,7 +14,7 @@ return {
         },
       },
       update_focused_file = { enable = false },
-      view = { width = 60 },
+      view = { width = 100 },
     })
     local api = require("nvim-tree.api")
 
