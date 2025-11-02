@@ -90,14 +90,15 @@ return {
       servers = servers,
     },
     config = function(_, opts)
-      -- TODO: replace deprecated nvim-lspconfig reference with suggestion.
-      -- Will no longer work with nvim-lspconfig v3.0
-      local lspconfig = require("lspconfig")
       for server, config in pairs(opts.servers) do
         -- passing config.capabilities to blink.cmp merges with the capabilities in your
         -- `opts[server].capabilities, if you've defined it
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
+        -- TODO: Can also provide a list of servers and enable in one go,
+        -- can also enable dynamically, e.g. could write a user function that disables
+        -- a certain LSP for a nvim session
+        vim.lsp.enable(server)
       end
 
       vim.api.nvim_create_autocmd("LspAttach", {
