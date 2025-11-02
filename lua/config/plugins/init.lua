@@ -53,6 +53,16 @@ return {
       { "<leader>go", "<cmd>Git log --oneline -n 100<cr><C-W><S-L>", desc = "[G]it log [O]neline" },
       { "<leader>gu", "<cmd>Git fetch | Git rebase | Git push <cr>", desc = "[G]it [U]pdate" },
       { "<leader>gc", "<cmd>w | Git add % | Git commit<cr>",         desc = "[G]it [C]ommit" },
+      {
+        "<leader>gm",
+        "<cmd>Git log -n 100 --oneline main..<cr><C-W><S-L>",
+        desc = "[G]it log oneline against [m]ain",
+      },
+      {
+        "<leader>gM",
+        "<cmd>Git log -n 100 --oneline master..<cr><C-W><S-L>",
+        desc = "[G]it log [O]neline against [M]aster",
+      },
     },
     cmd = "Git",
     config = function() end,
