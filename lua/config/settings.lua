@@ -37,8 +37,8 @@ vim.opt.conceallevel = 3
 
 vim.opt.textwidth = 100
 
--- when searching, respect case. precede search with `\c` to ignore case
-vim.opt.ignorecase = false
+-- when searching, ignore case. precede search with `\C` to respect case
+vim.opt.ignorecase = true
 
 -- save undo file history
 vim.o.undofile = true
