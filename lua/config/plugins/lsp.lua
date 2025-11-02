@@ -25,6 +25,23 @@ local flower_servers = {
   ts_ls = {},
   cssls = {},
   jsonls = {},
+  -- jdtls = {
+  --   settings = {
+  --     java = {
+  --       configuration = {
+  --         runtimes = {
+  --           {
+  --             name = "JavaSE-23",
+  --             path = "/usr/local/sdkman/candidates/java/23-tem",
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
+  -- java_language_server = {
+  --   cmd = { "/home/crundallt/opt/java-language-server/dist/lang_server_linux.sh" },
+  -- },
 }
 
 local nix_servers = {
