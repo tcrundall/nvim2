@@ -5,6 +5,8 @@ end
 return {
   "Decodetalkers/csharpls-extended-lsp.nvim",
   config = function()
+    -- TODO: replace deprecated nvim-lspconfig reference with suggestion.
+    -- Will no longer work with nvim-lspconfig v3.0
     require("lspconfig").csharp_ls.setup({ cmd = { "csharp-ls-0.16.0-patched" } })
     require("csharpls_extended").buf_read_cmd_bind()
   end,

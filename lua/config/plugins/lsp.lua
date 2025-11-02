@@ -72,6 +72,8 @@ end
 
 return {
   {
+    -- TODO: replace deprecated nvim-lspconfig reference with suggestion.
+    -- Will no longer work with nvim-lspconfig v3.0
     "neovim/nvim-lspconfig",
     dependencies = {
       { "saghen/blink.cmp" },
@@ -88,6 +90,8 @@ return {
       servers = servers,
     },
     config = function(_, opts)
+      -- TODO: replace deprecated nvim-lspconfig reference with suggestion.
+      -- Will no longer work with nvim-lspconfig v3.0
       local lspconfig = require("lspconfig")
       for server, config in pairs(opts.servers) do
         -- passing config.capabilities to blink.cmp merges with the capabilities in your
