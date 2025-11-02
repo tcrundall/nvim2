@@ -18,12 +18,6 @@ return {
         },
       },
       pickers = {
-        find_files = {
-          theme = "ivy",
-        },
-        current_buffer_fuzzy_find = {
-          theme = "ivy",
-        },
         -- Default configuration for builtin pickers goes here:
         -- picker_name = {
         --   picker_config_key = value,
@@ -31,6 +25,15 @@ return {
         -- }
         -- Now the picker_config_key will be applied every time you call this
         -- builtin picker
+        find_files = {
+          theme = "ivy",
+        },
+        current_buffer_fuzzy_find = {
+          theme = "ivy",
+        },
+        live_grep = {
+          theme = "ivy",
+        },
       },
       extensions = {
         -- Your extension configuration goes here:
@@ -75,5 +78,17 @@ return {
     end, { desc = "Telescope [S]earch all [F]iles" })
 
     vim.keymap.set("n", "<leader>sx", builtin.current_buffer_fuzzy_find)
+
+    -- Filter live grep for provided filetype
+    vim.keymap.set("n", "<leader>sp", function()
+      local file_pattern = vim.fn.input("File pattern: ")
+      if file_pattern ~= "" then
+        builtin.live_grep({ glob_pattern = file_pattern })
+      end
+    end, { desc = "[S]earch over file [P]attern" })
+
+    vim.keymap.set("n", "<leader>so", function()
+      builtin.live_grep({ grep_open_files = true })
+    end, { desc = "[S]earch [O]pen files" })
   end,
 }
