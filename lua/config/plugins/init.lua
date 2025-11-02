@@ -104,5 +104,8 @@ return {
       { "<leader>nn", "<cmd>NoNeckPain<cr>" },
     },
   },
-  { "nvim-java/nvim-java" },
+  -- { "nvim-java/nvim-java" },
+  {
+    "mfussenegger/nvim-jdtls",
+  },
 }
