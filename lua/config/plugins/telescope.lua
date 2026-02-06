@@ -29,7 +29,7 @@ return {
           theme = "ivy",
         },
         current_buffer_fuzzy_find = {
-          theme = "ivy",
+          theme = "cursor",
         },
         live_grep = {
           theme = "ivy",
@@ -52,6 +52,8 @@ return {
     vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "Telescope [S]earch [W]ord" })
     vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "Telescope [S]earch [R]esume" })
     vim.keymap.set("n", "<leader>ss", "<cmd>Telescope<cr>", { desc = "Telescope builtins" })
+    -- TODO: create a proper mapping that will do this
+    -- vim.keymap.set("n", "<leader>sW", "yiw<leader>sfp", { desc = "Telescope find files with current word" })
 
     vim.keymap.set("n", "<leader>ec", function()
       builtin.find_files({ cwd = vim.fn.stdpath("config") })
