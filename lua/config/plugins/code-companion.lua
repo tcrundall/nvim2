@@ -13,12 +13,26 @@ return {
       strategies = {
         chat = {
           adapter = "my_openai",
+          roles = {
+            llm = "CodeCompanion",
+            user = "Me",
+          },
         },
         inline = {
           adapter = "my_openai",
         },
         cmd = {
           adapter = "my_openai",
+        },
+        agent = {
+          adapter = "my_openai",
+          tools = {
+            ["editor"] = {
+              opts = {
+                enabled = true,
+              },
+            },
+          },
         },
       },
       adapters = {
@@ -31,8 +45,22 @@ return {
               },
               schema = {
                 model = {
-                  default = vim.env.AI_INLINE_MODEL or "gpt-4",
+                  default = vim.env.AI_INLINE_MODEL,
                 },
+              },
+              handlers = {
+                ---Set the parameters for the request
+                ---@param self CodeCompanion.Adapter
+                ---@param params table
+                ---@param messages table
+                ---@return table
+                form_parameters = function(self, params, messages)
+                  -- Ensure tool_choice is set properly for agents/tools
+                  if params.tools and #params.tools > 0 then
+                    params.tool_choice = params.tool_choice or "auto"
+                  end
+                  return params
+                end,
               },
             })
           end,
