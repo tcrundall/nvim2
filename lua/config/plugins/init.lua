@@ -108,4 +108,29 @@ return {
   {
     "mfussenegger/nvim-jdtls",
   },
+
+  "tpope/vim-abolish", -- handle variations of words in e.g. substituion
+  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    --- see ~/.local/share/nvim/lazy/render-markdown.nvim/lua/render-markdown/settings.lua
+    opts = {
+      anti_conceal = {
+        enabled = true,
+      },
+      pipe_table = {
+        style = "normal",
+      },
+      code = {
+        conceal_delimiters = false,
+        -- border = "thin",
+        -- langauge_border = "*",
+        -- above = "-",
+        -- below = "-",
+      },
+    },
+  },
 }
