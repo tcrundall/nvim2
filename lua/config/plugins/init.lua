@@ -2,10 +2,13 @@ return {
   "catppuccin/nvim", -- for my favourite daymode, catppuccin-frappe
   {
     "folke/tokyonight.nvim",
-    lazy = false,    -- load on startup
+    lazy = false, -- load on startup
     priority = 1000, -- load first
     config = function()
+      -- IDK why but without this, sometimes tokyonight-day gets selected
+      vim.cmd.colorscheme("tokyonight-day")
       if vim.env.THEME == "DARK_MODE" then
+        vim.cmd.colorscheme("tokyonight-night")
         vim.cmd.colorscheme("tokyonight-night")
       end
     end,
@@ -22,8 +25,8 @@ return {
   {
     "catppuccin/nvim",
     opts = {},
-    lazy = false,   -- load on startup
-    priority = 999, -- load first
+    lazy = false, -- load on startup
+    priority = 1000, -- load first
     keys = {
       {
         "<leader>thl",
@@ -35,6 +38,8 @@ return {
     },
     config = function()
       if vim.env.THEME == "LIGHT_MODE" then
+        vim.cmd.colorscheme("catppuccin-latte")
+        vim.cmd.colorscheme("catppuccin-latte")
         vim.cmd.colorscheme("catppuccin-latte")
       end
     end,
@@ -49,11 +54,12 @@ return {
   {
     "tpope/vim-fugitive",
     keys = {
-      { "<leader>gs", "<cmd>Git<cr>",                                desc = "[G]it [S]tatus" },
-      { "<leader>gl", "<cmd>Git log -n 100<cr><C-W><S-L>",           desc = "[G]it [L]og" },
+      { "<leader>gs", "<cmd>Git<cr>", desc = "[G]it [S]tatus" },
+      { "<leader>gb", "<cmd>Git blame<cr>", desc = "[G]it [B]lame" },
+      { "<leader>gl", "<cmd>Git log -n 100<cr><C-W><S-L>", desc = "[G]it [L]og" },
       { "<leader>go", "<cmd>Git log --oneline -n 100<cr><C-W><S-L>", desc = "[G]it log [O]neline" },
       { "<leader>gu", "<cmd>Git fetch | Git rebase | Git push <cr>", desc = "[G]it [U]pdate" },
-      { "<leader>gc", "<cmd>w | Git add % | Git commit<cr>",         desc = "[G]it [C]ommit" },
+      { "<leader>gc", "<cmd>w | Git add % | Git commit<cr>", desc = "[G]it [C]ommit" },
       {
         "<leader>gm",
         "<cmd>Git log -n 100 --oneline main..<cr><C-W><S-L>",
@@ -126,7 +132,7 @@ return {
       },
       code = {
         conceal_delimiters = false,
-        -- border = "thin",
+        border = "thick",
         -- langauge_border = "*",
         -- above = "-",
         -- below = "-",
