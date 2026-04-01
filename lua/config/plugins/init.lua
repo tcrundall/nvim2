@@ -1,5 +1,48 @@
 return {
-  "catppuccin/nvim", -- for my favourite daymode, catppuccin-frappe
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    -- event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<M-y>",
+            accept_word = false,
+            accept_line = false,
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+        panel = {
+          enabled = true,
+          auto_refresh = false,
+          keymap = {
+            jump_prev = "[[",
+            jump_next = "]]",
+            accept = "<CR>",
+            refresh = "gr",
+            open = "<M-CR>",
+          },
+        },
+        filetypes = {
+          yaml = false,
+          markdown = false,
+          help = false,
+          gitcommit = false,
+          gitrebase = false,
+          hgcommit = false,
+          svn = false,
+          cvs = false,
+          ["."] = false,
+        },
+        copilot_node_command = vim.fn.expand("$HOME") .. "/.proto/shims/node", -- explicitly use proto's node
+      })
+    end,
+  },
   {
     "folke/tokyonight.nvim",
     lazy = false, -- load on startup
