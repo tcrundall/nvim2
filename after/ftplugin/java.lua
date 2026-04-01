@@ -6,3 +6,6 @@ if not pkg_status then
 end
 -- -- Comment this line out to not enable java lsp
 -- jdtls.start_or_attach(jdtls_config)
+
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4

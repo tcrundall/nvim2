@@ -17,15 +17,32 @@ local base_servers = {
   zls = {},
 }
 
+local vue_language_server_path = vim.fn.expand("$MASON/packages")
+  .. "/vue-language-server"
+  .. "/node_modules/@vue/language-server"
+
 local flower_servers = {
   clangd = {},
   cmake = {},
   -- csharp_ls is setup in ./csharpls_extended.lua
   gopls = {},
-  ts_ls = {},
+  ts_ls_config = {
+    init_options = {
+      plugins = {
+        {
+          name = "@vue/typescript-plugin",
+          location = vue_language_server_path,
+          languages = { "vue" },
+          configNamespace = "typescript",
+        },
+      },
+    },
+    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+  },
   cssls = {},
   jsonls = {},
-  -- jdtls = {
+  eslint = {},
+  -- jdtls = {},
   --   settings = {
   --     java = {
   --       configuration = {
@@ -95,7 +112,7 @@ return {
     dependencies = {
       { "saghen/blink.cmp" },
       { "Decodetalkers/csharpls-extended-lsp.nvim" },
-      { "j-hui/fidget.nvim",                       opts = {} },
+      { "j-hui/fidget.nvim", opts = {} },
       {
         "williamboman/mason.nvim",
         config = function()
@@ -139,10 +156,12 @@ return {
           end
 
           if
-              client:supports_method("textDocument/formatting")
-              and client.name ~= "ts_ls"
-              and client.name ~= "cssls"
-              and client.name ~= "jsonls"
+            client:supports_method("textDocument/formatting")
+            and client.name ~= "ts_ls"
+            and client.name ~= "cssls"
+            and client.name ~= "jsonls"
+            and client.name ~= "vue_ls"
+            and client.name ~= "lua_ls"
           then
             -- Format the current buffer on save
             vim.api.nvim_create_autocmd("BufWritePre", {
@@ -183,10 +202,10 @@ return {
 
       -- :help vim.diagnostic.Opts
       vim.diagnostic.config({
-        underline = false,                                                -- underline cause of issue
+        underline = false, -- underline cause of issue
         virtual_text = { severity = { min = vim.diagnostic.severity.HINT } }, -- append issue to end of line as virtual text
-        signs = { severity = { min = vim.diagnostic.severity.HINT } },    -- add symbol in signs column
-        virtual_lines = false,                                            -- describe issue in virutal lines below
+        signs = { severity = { min = vim.diagnostic.severity.HINT } }, -- add symbol in signs column
+        virtual_lines = false, -- describe issue in virutal lines below
         float = {
           border = "double",
         },

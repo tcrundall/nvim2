@@ -19,6 +19,12 @@ local ts_ls_config = {
 }
 
 -- nvim 0.11 or above
-vim.lsp.config("vue_ls", {})
+vim.lsp.config("vue_ls", {
+  settings = {
+    vue = {
+      autoFormatOnSave = false,
+    },
+  },
+})
 vim.lsp.config("ts_ls", ts_ls_config)
 vim.lsp.enable({ "ts_ls", "vue_ls" })

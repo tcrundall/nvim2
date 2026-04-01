@@ -24,7 +24,8 @@ local proj_log_file = vim.env.PROJ_LOG_FILE or "~/log-project.md"
 map("n", "<leader>epl", "<cmd>vs " .. proj_log_file .. "<cr>")
 
 map("n", "y%", function()
-  vim.fn.setreg('"', vim.fn.expand("%"))
+  vim.fn.setreg('"', vim.fn.expand("%:p"))
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
 end)
 
 -- TODO: Attach these mappings to a group activated and deactivated via user command

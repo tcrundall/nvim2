@@ -7,6 +7,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    "junegunn/fzf",
   },
   config = function()
     require("codecompanion").setup({

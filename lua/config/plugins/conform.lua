@@ -21,9 +21,9 @@ return {
       go = { "gofmt" },
       python = { "black", "autoflake", "isort" },
       terraform = { "terraform_fmt" },
-      typescriptreact = { "biome" },
-      typescript = { "biome" },
-      javascript = { "biome" },
+      -- typescriptreact = { "biome" },
+      -- typescript = { "biome" },
+      -- javascript = { "biome" },
       css = { "biome" },
       html = { "superhtml" },
       ["*"] = { "codespell" }, -- TODO: check how this works

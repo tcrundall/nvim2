@@ -1,3 +1,4 @@
+local notes_dir = vim.env.NOTES_DIR
 return {
   "nvim-telescope/telescope.nvim",
   tag = "0.1.8",
@@ -48,6 +49,7 @@ return {
     vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "Telescope find files" })
     vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Telescope live grep" })
     vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "Telescope buffers" })
+    vim.keymap.set("n", "<leader>sB", builtin.git_branches, { desc = "Telescope branches" })
     vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Telescope help tags" })
     vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "Telescope [S]earch [W]ord" })
     vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "Telescope [S]earch [R]esume" })
@@ -68,7 +70,7 @@ return {
     })
 
     vim.keymap.set("n", "<leader>en", function()
-      builtin.find_files({ cwd = "~/repos/notes" })
+      builtin.find_files({ cwd = notes_dir })
     end)
 
     vim.keymap.set("n", "<leader>sF", function()

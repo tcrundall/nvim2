@@ -16,7 +16,7 @@ set.scrolloff = 8
 -- keep sign column on to avoid jerking around
 set.signcolumn = "yes"
 
--- if closing without right, prompt for resolution
+-- if closing without write, prompt for resolution
 set.confirm = true
 
 -- set fold method based treesitter parsing
@@ -45,3 +45,11 @@ vim.o.undofile = true
 
 -- disable spell checker from caring about capitalizing sentence start
 vim.o.spellcapcheck = ""
+
+-- display tabs and trailing whitespace
+vim.o.list = true
+vim.o.listchars = "tab:→ ,trail:·"
+
+-- remove `#` as filename char, to enable gF to work on links like ~/.editorconfig#L7
+vim.o.isfname = "@,48-57,/,.,-,_,+,,,$,%,~,="
+-- vim.o.isfname = "@,48-57,/,.,-,_,+,,,#,$,%,~,=" -- default

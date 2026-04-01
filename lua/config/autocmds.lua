@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
       line_fold_level = string.gsub(line_fold_level, ">", "") + 0
       max_fold_level = math.max(max_fold_level, line_fold_level)
     end
-    local min_starting_fold_level = 2 -- to avoid annoying auto folding in new file
+    local min_starting_fold_level = 10 -- to avoid annoying auto folding in new file
     vim.opt.foldlevel = vim.fn.max({ max_fold_level, min_starting_fold_level })
   end,
 })
