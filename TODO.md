@@ -44,6 +44,7 @@
 
 - link follower
     - extend to make use of `gx` / `vim.ui.open()`
+    - handle [my-file](./my-file#L2)
 - markdown box checking
 - open api veiwer
 - mermaid builder
