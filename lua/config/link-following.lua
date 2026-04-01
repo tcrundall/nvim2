@@ -19,11 +19,6 @@ local function jump_to_markdown_header(link)
   vim.api.nvim_feedkeys("/" .. search_phrase .. enter .. "nzz:noh" .. enter, "n", true)
 end
 
-local function jump_to_url(link)
-  link = link:gsub("#", "\\#")
-  vim.ui.open(link)
-end
-
 local function jump_to_file(address)
   local relative_link = address:sub(1, 1) == "."
 
@@ -42,6 +37,8 @@ local function jump_to_file(address)
       return
     end
   end
+
+  local line_number_seps = { "#L", ":" }
 
   if vim.uv.fs_stat(address) == nil then
     print("File does not seem to exist")
@@ -98,7 +95,7 @@ local function follow_link()
   if vim.startswith(address, "#") then
     jump_to_markdown_header(address)
   elseif vim.startswith(address, "http") then
-    jump_to_url(address)
+    vim.ui.open(address)
   else
     jump_to_file(address)
   end
@@ -108,4 +105,4 @@ vim.api.nvim_create_user_command("FollowLink", function()
   follow_link()
 end, {})
 
-vim.api.nvim_set_keymap("n", "gl", "<cmd>FollowLink<cr>", {})
+vim.keymap.set("n", "gl", "<cmd>FollowLink<cr>", { desc = "[G]o to [L]ink" })
