@@ -19,6 +19,25 @@ return {
       nerd_font_variant = "mono",
     },
 
+    completion = {
+      -- show e.g. function docs alongside copmletion suggestion
+      -- use <C-B> and <C-F> to scroll through docs
+      documentation = {
+        auto_show = true,
+      },
+      accept = {
+        auto_brackets = {
+          enabled = false,
+        },
+      },
+    },
+
+    -- this is for when you're typing the signature
+    -- signature = {
+    --   enabled = true,
+    --   window = { show_documentation = true },
+    -- },
+
     sources = {
       default = { "lazydev", "lsp", "path", "snippets", "buffer" },
       per_filetype = {
