@@ -33,20 +33,28 @@ local function jump_to_file(address)
     if vim.endswith(address, extension) then
       address = address:gsub(" ", "\\ ")
       vim.ui.open(address)
-      -- vim.fn.execute("!open " .. address)
       return
     end
   end
 
-  local line_number_seps = { "#L", ":" }
+  -- TODO: Support jumping direct to line number, only support `#L` for now
+  local line_number_seps = { "#L" } -- , ":" }
 
-  if vim.uv.fs_stat(address) == nil then
-    print("File does not seem to exist")
-    print(address)
-    return
+  local line_number = nil
+  for _, sep in ipairs(line_number_seps) do
+    local start, match_end = address:find(sep)
+    if start ~= nil then
+      line_number = address:sub(match_end + 1)
+      address = address:sub(1, start - 1)
+    end
   end
 
-  vim.cmd("e " .. address)
+  local buf_nr = vim.uri_to_bufnr(address)
+  local win_nr = vim.api.nvim_open_win(buf_nr, true, { split = "below", win = -1 })
+
+  if line_number ~= nil then
+    vim.api.nvim_win_set_cursor(win_nr, { tonumber(line_number), 0 })
+  end
 end
 
 local function is_valid_markdown_link(str, open_paren_ix, close_paren_ix)
