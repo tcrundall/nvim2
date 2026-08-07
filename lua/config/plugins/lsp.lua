@@ -202,10 +202,8 @@ return {
 
       -- :help vim.diagnostic.Opts
       vim.diagnostic.config({
-        underline = false, -- underline cause of issue
-        virtual_text = { severity = { min = vim.diagnostic.severity.HINT } }, -- append issue to end of line as virtual text
+        underline = true, -- underline cause of issue
         signs = { severity = { min = vim.diagnostic.severity.HINT } }, -- add symbol in signs column
-        virtual_lines = false, -- describe issue in virutal lines below
         float = {
           border = "double",
         },
@@ -218,41 +216,55 @@ return {
       })
 
       local diagnostic_hints_enable = true
+      local diagnostic_virtual_type = "text"
+
+      local function update_config()
+        local min_severity
+        if diagnostic_hints_enable then
+          min_severity = vim.diagnostic.severity.HINT
+        else
+          min_severity = vim.diagnostic.severity.WARN
+        end
+
+        local diagnostic_hints_opts = {
+          signs = {
+            severity = { min = min_severity },
+          },
+          jump = {
+            float = true,
+            severity = { min = min_severity },
+          },
+        }
+        if diagnostic_virtual_type == "lines" then
+          diagnostic_hints_opts["virtual_lines"] = {
+            severity = { min = min_severity },
+          }
+          diagnostic_hints_opts["virtual_text"] = false
+        elseif diagnostic_virtual_type == "text" then
+          diagnostic_hints_opts["virtual_text"] = {
+            severity = { min = min_severity },
+          }
+          diagnostic_hints_opts["virtual_lines"] = false
+        end
+
+        vim.diagnostic.config(diagnostic_hints_opts)
+      end
+
+      update_config()
+
+      vim.api.nvim_create_user_command("ToggleVirtualType", function()
+        if diagnostic_virtual_type == "lines" then
+          diagnostic_virtual_type = "text"
+        else
+          diagnostic_virtual_type = "lines"
+        end
+        update_config()
+      end, {})
 
       vim.api.nvim_create_user_command("ToggleHints", function()
         local diagnostic_hints_opts = {}
         diagnostic_hints_enable = not diagnostic_hints_enable
-        print("Hints enabled: " .. tostring(diagnostic_hints_enable))
-
-        if diagnostic_hints_enable then
-          diagnostic_hints_opts = {
-            virtual_text = {
-              severity = { min = vim.diagnostic.severity.HINT },
-            },
-            signs = {
-              severity = { min = vim.diagnostic.severity.HINT },
-            },
-            jump = {
-              float = true,
-              severity = { min = vim.diagnostic.severity.HINT },
-            },
-          }
-        else
-          diagnostic_hints_opts = {
-            virtual_text = {
-              severity = { min = vim.diagnostic.severity.WARN },
-            },
-            signs = {
-              severity = { min = vim.diagnostic.severity.WARN },
-            },
-            jump = {
-              float = true,
-              severity = { min = vim.diagnostic.severity.WARN },
-            },
-          }
-        end
-
-        vim.diagnostic.config(diagnostic_hints_opts)
+        update_config()
       end, {})
     end,
   },
