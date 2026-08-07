@@ -1,3 +1,5 @@
+local highlights = require("config.highlights")
+
 return {
   {
     "zbirenbaum/copilot.lua",
@@ -53,6 +55,7 @@ return {
       if vim.env.THEME == "DARK_MODE" then
         vim.cmd.colorscheme("tokyonight-night")
         vim.cmd.colorscheme("tokyonight-night")
+        highlights.set_dark_highlight_groups()
       end
     end,
     keys = {
@@ -61,6 +64,7 @@ return {
         function()
           vim.cmd.colorscheme("tokyonight-night")
           vim.cmd.colorscheme("tokyonight-night")
+          highlights.set_dark_highlight_groups()
         end,
       },
     },
@@ -76,6 +80,7 @@ return {
         function()
           vim.cmd.colorscheme("catppuccin-latte")
           vim.cmd.colorscheme("catppuccin-latte")
+          highlights.set_light_highlight_groups()
         end,
       },
     },
@@ -84,6 +89,7 @@ return {
         vim.cmd.colorscheme("catppuccin-latte")
         vim.cmd.colorscheme("catppuccin-latte")
         vim.cmd.colorscheme("catppuccin-latte")
+        highlights.set_light_highlight_groups()
       end
     end,
   },
