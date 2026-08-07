@@ -188,4 +188,14 @@ return {
       },
     },
   },
+  -- { -- Clippy diagnostics
+  --   "johnsaigle/clippy.nvim",
+  --   dependencies = { "jose-elias-alvarez/null-ls.nvim" },
+  -- },
+  -- {
+  --   "your-username/nvim-clippy-telescope", -- Replace with your actual GitHub repo path
+  --   config = function()
+  --     require("nvim-clippy.clippy") -- Load the module
+  --   end,
+  -- },
 }

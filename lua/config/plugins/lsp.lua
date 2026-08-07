@@ -39,6 +39,16 @@ local flower_servers = {
     },
     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
   },
+  rust_analyzer = {
+    settings = {
+      ["rust-analyzer"] = {
+        check = {
+          -- command = "clippy",
+          command = "clippy",
+        },
+      },
+    },
+  },
   cssls = {},
   jsonls = {},
   eslint = {},
