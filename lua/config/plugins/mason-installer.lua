@@ -3,19 +3,19 @@ if vim.env.NVIM_ANDROID == "true" then
 end
 
 local base_formatter_executables = {
-  { "autoflake",  version = "2.3.1" },
-  { "black",      version = "25.1.0" },
-  { "isort",      version = "6.0.1" },
+  { "autoflake", version = "2.3.1" },
+  { "black", version = "25.1.0" },
+  { "isort", version = "6.0.1" },
   { "shellcheck", version = "v0.10.0" },
-  { "shfmt",      version = "v3.11.0" },
-  { "stylua",     version = "v2.1.0" },
+  { "shfmt", version = "v3.11.0" },
+  { "stylua", version = "v2.1.0" },
 }
 
 local base_lsp_executables = {
   { "bash-language-server", version = "5.6.0" },
-  { "lua-language-server",  version = "3.14.0" },
-  { "pyright",              version = "1.1.402" },
-  { "zls",                  version = "0.15.0" },
+  { "lua-language-server", version = "3.14.0" },
+  { "pyright", version = "1.1.402" },
+  { "zls", version = "0.16.0" },
 }
 
 local flower_lsp_executables = {
