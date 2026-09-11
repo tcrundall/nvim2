@@ -57,7 +57,7 @@ local function setup()
   local jdtls_bin = vim.fn.stdpath("data") .. "/mason/bin/jdtls"
 
   local root_markers = { ".gradle", "gradlew", ".git" }
-  local root_dir = jdtls.setup.find_root(root_markers)
+  -- local root_dir = jdtls.setup.find_root(root_markers)
   local home = os.getenv("HOME")
   -- local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
   local project_name = vim.env.JAVA_PROJECT

@@ -31,7 +31,6 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = "v:lua.get_fold_text()"
 
--- Comment
 -- Set conceal for pretty presentation of e.g. markdown
 vim.opt.conceallevel = 3
 
