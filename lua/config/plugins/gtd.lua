@@ -1,5 +1,5 @@
-local notes_dir = vim.env.NOTES_DIR
-local next_actions_file = vim.env.NEXT_ACTIONS_FILE
+local notes_dir = vim.env.NOTES_DIR or "~/notes/"
+local next_actions_file = vim.env.NEXT_ACTIONS_FILE or "~/notes/next-actions.md"
 
 local function add_to_in_basket()
   vim.ui.input({ prompt = "topic" }, function(input)
